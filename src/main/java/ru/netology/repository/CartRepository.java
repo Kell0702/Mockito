@@ -18,7 +18,7 @@ public class CartRepository {
         return items;
     }
 
-    public void removeById(int id) {
+    public ListFilms[] removeById(int id) {
         int length = items.length - 1;
         ListFilms[] tmp = new ListFilms[length];
         int index = 0;
@@ -29,6 +29,7 @@ public class CartRepository {
             }
         }
         items = tmp;
+        return tmp;
     }
 }
 

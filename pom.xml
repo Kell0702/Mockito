@@ -51,14 +51,14 @@
                 <version>0.8.5</version>
                 <executions>
                     <execution>
-                        <id>agent007</id>
+                        <id>agent008</id>
                         <phase>initialize</phase>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>report007</id>
+                        <id>report008</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>report</goal>
@@ -72,6 +72,10 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <excludes>
+                        <exclude>ru/netology/repository/CartRepository.class</exclude>
+                        <exclude>ru/netology/ListFilms.class</exclude>
+                    </excludes>
                     <rules>
                         <rule>
                             <limits>
