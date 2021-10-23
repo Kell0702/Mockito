@@ -20,26 +20,32 @@ public class CartRepositoryTest {
     private ListFilms film8 = new ListFilms(17, "Мулан", 8);
     private ListFilms film9 = new ListFilms(18, "Драйв", 9);
     private ListFilms film10 = new ListFilms(19, "Ветер крепчает", 10);
+    private ListFilms film11 = new ListFilms(20, "Тёмный рыцарь", 11);
+    private ListFilms film12 = new ListFilms(21, "Стекло", 12);
 
 
-//    @Test
-//    public void shouldSaveOneItem() {
-//        repository.save(films);
-//
-//        ListFilms[] expected = new ListFilms[]{films};
-//        ListFilms[] actual = repository.findAll();
-//        assertArrayEquals(expected, actual);
-//
-//    }
-//
-//    @Test
-//    public void shouldRemoveById() {
-//        repository.save(films);
-//        repository.removeById(15);
-//
-//        ListFilms[] expected = new ListFilms[]{};
-//        ListFilms[] actual = repository.findAll();
-//        assertArrayEquals(expected, actual);
-//
-//    }
+    @Test
+    public void shouldSaveItem() {
+        ListFilms[] films = new ListFilms[]{film1, film2, film3, film4, film5, film6, film7, film8, film9, film10, film11, film12};
+        ListFilms[] saveListFilm = new ListFilms[]{film1, film2, film3, film4, film5, film6, film7, film8, film9, film10, film11, film12};
+        repository.save(films);
+
+        ListFilms[] expected = saveListFilm;
+        ListFilms[] actual = repository.findAll();
+        assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldRemoveById() {
+        ListFilms[] films = new ListFilms[]{film1, film2, film3, film4, film5, film6, film7, film8, film9, film10, film11, film12};
+        ListFilms[] newListFilm = new ListFilms[]{film1, film2, film3, film4, film5, film7, film8, film9, film10, film11, film12};
+        repository.save(films);
+        repository.removeById(film6.getId());
+
+        ListFilms[] expected = newListFilm;
+        ListFilms[] actual = repository.findAll();
+        assertArrayEquals(expected, actual);
+
+    }
 }

@@ -73,7 +73,7 @@
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>ru/netology/repository/CartRepository.class</exclude>
+<!--                        <exclude>ru/netology/repository/CartRepository.class</exclude>-->
                         <exclude>ru/netology/ListFilms.class</exclude>
                     </excludes>
                     <rules>

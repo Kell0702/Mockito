@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 public class ManagerTest {
     private Mockito Mocito;
     private CartRepository repository = Mocito.mock(CartRepository.class);
-    private Manager manager = new Manager(repository);
+    private Manager manager = new Manager(repository,10,8);
     private ListFilms film1 = new ListFilms(10, "Бладшот", 1);
     private ListFilms film2 = new ListFilms(11, "Вперёд", 2);
     private ListFilms film3 = new ListFilms(12, "Отель Белград", 3);
@@ -63,13 +63,13 @@ public class ManagerTest {
     }
 
     @Test
-    public void shouldSaveFilm8Items() {
+    public void shouldSaveFilmNoLimitItems() {
         ListFilms[] returned = {film5, film6, film7, film8, film9, film10, film11, film12};
         ListFilms[] newList = new ListFilms[]{film12, film11, film10, film9, film8, film7, film6, film5};
         doReturn(returned).when(repository).findAll();
 
         ListFilms[] expected = newList;
-        ListFilms[] actual = manager.getAll();
+        ListFilms[] actual = manager.getAllNoLimit();
         assertArrayEquals(expected, actual);
         verify(repository).findAll();
     }

@@ -12,7 +12,4 @@ public class ListFilms {
     private int id;
     private String name;
     private int productId;
-
-
-
 }

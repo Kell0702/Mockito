@@ -6,6 +6,14 @@ import java.util.Objects;
 
 public class Manager {
     private CartRepository repository;
+    private int length;
+    private int listLength;
+
+    public Manager(CartRepository repository, int length, int listLength) {
+        this.repository = repository;
+        this.length = length;
+        this.listLength = listLength;
+    }
 
     public CartRepository getRepository() {
         return repository;
@@ -15,11 +23,7 @@ public class Manager {
         this.repository = repository;
     }
 
-    public Manager(CartRepository repository) {
-        this.repository = repository;
-    }
-
-    public void add(ListFilms item) {
+    public void add(ListFilms[] item) {
         repository.save(item);
     }
 
@@ -27,30 +31,29 @@ public class Manager {
         repository.removeById(id);
     }
 
+    public ListFilms[] getAllNoLimit() {
+        ListFilms[] items = repository.findAll();
+        ListFilms[] result = new ListFilms[listLength];
+        for (int i = 0; i < items.length; i++) {
+            int index = items.length - i - 1;
+            result[i] = items[index];
+        }
+        return result;
+    }
+
     public ListFilms[] getAll() {
         ListFilms[] items = repository.findAll();
-        int listFilms = items.length;
-        if (items.length < 10) {
-        } else {
-            listFilms = 10;
-        }
-        ListFilms[] result = new ListFilms[listFilms];
+//        int listFilms = items.length;
+//        if (items.length < length) {
+//        } else {
+//            listFilms = length;
+//        }
+        ListFilms[] result = new ListFilms[length];
         for (int i = 0; i < result.length; i++) {
             int index = items.length - i - 1;
             result[i] = items[index];
         }
         return result;
     }
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Manager manager = (Manager) o;
-//        return Objects.equals(repository, manager.repository);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(repository);
-//    }
+
 }
