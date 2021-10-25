@@ -5,15 +5,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 
 public class Manager {
     private static Object ListFilms;
     private CartRepository repository;
     private int length;
     private int listLength;
+
+
+    public Manager(CartRepository repository, int length, int listLength) {
+        this.repository = repository;
+        this.length = length;
+        this.listLength = listLength;
+    }
 
     public static void Manager(String[] args) {
         Manager repository = new Manager((CartRepository) ListFilms, 10, 5);
