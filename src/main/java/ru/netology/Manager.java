@@ -12,6 +12,9 @@ public class Manager {
     private int length;
     private int listLength;
 
+    public Manager() {
+    }
+
 
     public Manager(CartRepository repository, int length, int listLength) {
         this.repository = repository;
