@@ -1,8 +1,13 @@
 package ru.netology;
 
 import ru.netology.repository.CartRepository;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Objects;
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 
 public class Manager {
     private static Object ListFilms;
@@ -10,14 +15,8 @@ public class Manager {
     private int length;
     private int listLength;
 
-    public Manager(CartRepository repository, int length, int listLength) {
-        this.repository = repository;
-        this.length = length;
-        this.listLength = listLength;
-    }
-
     public static void Manager(String[] args) {
-        Manager repository = new Manager((CartRepository) ListFilms, 10, 8);
+        Manager repository = new Manager((CartRepository) ListFilms, 10, 5);
     }
 
     public void setRepository(CartRepository repository) {
