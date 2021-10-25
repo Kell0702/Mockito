@@ -55,18 +55,4 @@ public class Manager {
         }
         return result;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Manager manager = (Manager) o;
-        return length == manager.length && listLength == manager.listLength && Objects.equals(repository, manager.repository);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(repository, length, listLength);
-    }
-
 }
