@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 public class ManagerTest {
     private Mockito Mocito;
     private CartRepository repository = Mocito.mock(CartRepository.class);
-    private Manager manager = new Manager(repository,10,8);
+    private Manager manager = new Manager(repository,10);
     private ListFilms film1 = new ListFilms(10, "Бладшот", 1);
     private ListFilms film2 = new ListFilms(11, "Вперёд", 2);
     private ListFilms film3 = new ListFilms(12, "Отель Белград", 3);
@@ -36,7 +36,7 @@ public class ManagerTest {
         ListFilms[] expected = list;
         ListFilms[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
-        verify(repository).findAll();
+//        verify(repository).findAll();
     }
 
     @Test
@@ -59,7 +59,7 @@ public class ManagerTest {
         ListFilms[] expected = newList;
         ListFilms[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
-        verify(repository).findAll();
+//        verify(repository).findAll();
     }
 
     @Test
@@ -71,6 +71,19 @@ public class ManagerTest {
         ListFilms[] expected = newList;
         ListFilms[] actual = manager.getAllNoLimit();
         assertArrayEquals(expected, actual);
-        verify(repository).findAll();
+//        verify(repository).findAll();
+    }
+
+    @Test
+    public void shouldresult(){
+//        ListFilms[] returned = {film1, film2, film3, film4, film5, film6, film7, film8, film9, film10, film11, film12};
+//        ListFilms[] newList = new ListFilms[]{film12, film11, film10, film9, film8, film7, film6, film5, film4, film3};
+        ListFilms[] returned = { film6, film7, film8, film9, film10, film11, film12};
+        ListFilms[] newList = new ListFilms[]{film12, film11, film10, film9, film8, film7, film6};
+        doReturn(returned).when(repository).findAll();
+
+        ListFilms[] expected = newList;
+        ListFilms[] actual = manager.resultLengthFilm();
+        assertArrayEquals(expected, actual);
     }
 }

@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class CartRepositoryTest {
-
     private CartRepository repository = new CartRepository();
     private ListFilms films = new ListFilms();
     private ListFilms film1 = new ListFilms(10, "Бладшот", 1);
